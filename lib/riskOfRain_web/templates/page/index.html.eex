@@ -1,0 +1,66 @@
+<center>
+  <form style="font-size : 30px; width: 500px;
+      height: 100%; background:#FFC300;
+      border-radius: 25px; border: 2px solid black;
+      padding:2px">
+      <strong>Home</strong>
+  </form>
+</center>
+
+<h2>
+  <center>
+    <form style="font-size: 20px; width: 500px;
+          height: 100%; background:#FFC300;
+          border-radius: 25px; border: 2px solid black;
+          padding:6px">
+
+      <%= Phoenix.HTML.Link.button("Home", to: "/", method: "get", class: "btn") %>
+      <%= Phoenix.HTML.Link.button("Characters", to: "/characters", method: "get", class: "btn") %>
+      <%= Phoenix.HTML.Link.button("Enemies", to: "/enemies", method: "get", class: "btn") %>
+      <%= Phoenix.HTML.Link.button("Items", to: "/items", method: "get", class: "btn") %>
+    </form>
+  </center>
+</h2>
+
+
+<center>
+  <div class="jumbotron"
+        style="font-size: 20px; width: 100%;
+        height: 100%; background:#FFC300;
+        border-radius: 25px; border: 2px solid black;
+        padding:6px">
+    <h2 style="font-size: 40px"><%= gettext "Welcome to the %{name} Database!", name: "Risk of Rain" %></h2>
+    <p class="lead"style="font-size: 30px">An interactive database<br />of enemies, characters, and items.</p>
+  </div>
+</center>
+<!-- <div class="row marketing">
+  <div class="col-lg-6">
+    <h4>Resources</h4>
+    <ul>
+      <li>
+        <a href="http://phoenixframework.org/docs/overview">Guides</a>
+      </li>
+      <li>
+        <a href="https://hexdocs.pm/phoenix">Docs</a>
+      </li>
+      <li>
+        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-lg-6">
+    <h4>Help</h4>
+    <ul>
+      <li>
+        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
+      </li>
+      <li>
+        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+      </li>
+    </ul>
+  </div>
+</div> -->

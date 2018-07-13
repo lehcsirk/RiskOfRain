@@ -1,0 +1,5 @@
+<h2>New Enemy</h2>
+
+<%= render "form.html", Map.put(assigns, :action, enemy_path(@conn, :create)) %>
+
+<span><%= link "Back", to: enemy_path(@conn, :index) %></span>

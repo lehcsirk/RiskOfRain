@@ -1,0 +1,62 @@
+<center>
+  <form style="font-size : 30px; width: 500px;
+      height: 100%; background:#48B0E0;
+      border-radius: 25px; border: 2px solid black;
+      padding:2px">
+      <strong>Characters</strong>
+  </form>
+</center>
+
+<h2>
+  <center>
+    <form  style="font-size : 20px; width: 500px;
+          height: 100%; background:#48B0E0;
+          border-radius: 25px; border: 2px solid black;
+          padding:6px">
+
+      <%= Phoenix.HTML.Link.button("Home", to: "/", method: "get", class: "btn") %>
+      <%= Phoenix.HTML.Link.button("Characters", to: "/characters", method: "get", class: "btn") %>
+      <%= Phoenix.HTML.Link.button("Enemies", to: "/enemies", method: "get", class: "btn") %>
+      <%= Phoenix.HTML.Link.button("Items", to: "/items", method: "get", class: "btn") %>
+    </form>
+  </center>
+</h2>
+
+<table class="table"
+      style="font-size : 15px; width: 100%;
+      height: 100%; background:#48B0E0;
+      border-radius: 25px; border: 2px solid black;
+      border-collapse: separate !important;
+      padding:6px; table-layout: fixed; word-wrap: break-word;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Desc</th>
+      <th>Abilities</th>
+
+      <th>
+        <center>
+          <span style="font-size: 15px; color: black;">
+            <%= link "New Character", to: character_path(@conn, :new) %>
+          </span>
+        </center>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= for character <- @characters do %>
+      <tr>
+        <td><%= character.name %></td>
+        <td><%= character.desc %></td>
+        <td><%= if character.abilities == nil, do: '', else: Enum.join(character.abilities, ", ") %></td>
+
+        <td class="text-right">
+          <span><%= link "Show", to: character_path(@conn, :show, character), class: "btn btn-default btn-xs" %></span>
+          <span><%= link "Edit", to: character_path(@conn, :edit, character), class: "btn btn-default btn-xs" %></span>
+          <span><%= link "Delete", to: character_path(@conn, :delete, character), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

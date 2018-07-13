@@ -1,0 +1,23 @@
+<h2>Show Enemy</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @enemy.name %>
+  </li>
+
+  <li>
+    <strong>Desc:</strong>
+    <%= @enemy.desc %>
+  </li>
+
+  <li>
+    <strong>Type:</strong>
+    <%= @enemy.type %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: enemy_path(@conn, :edit, @enemy) %></span>
+<span><%= link "Back", to: enemy_path(@conn, :index) %></span>
