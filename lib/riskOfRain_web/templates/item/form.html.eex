@@ -5,6 +5,29 @@
     </div>
   <% end %>
 
+  <img src="" class="img-rounded" style="width:25%;">
+
+  <script>
+    var link = window.location.href
+
+    if(link != "http://localhost:5000/items/new")
+    {
+      num = link.substr(link.indexOf("items") + 6)
+
+      if(num.indexOf("/") !== -1)
+      {
+        num = "item" + num.substr(0, num.indexOf("/"))
+      }
+      else
+      {
+        num = "item" + num
+      }
+
+      document.getElementsByTagName("img")[0].src =
+        ("/images/" + num + ".jpg")
+    }
+  </script>
+
   <div class="form-group">
     <%= label f, :name, class: "control-label" %>
     <%= text_input f, :name, class: "form-control" %>
@@ -25,5 +48,6 @@
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
+    <%= link "Back", to: item_path(@conn, :index), class: "btn btn-primary"%>
   </div>
 <% end %>

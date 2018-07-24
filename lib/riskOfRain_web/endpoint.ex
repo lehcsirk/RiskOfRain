@@ -19,6 +19,9 @@ defmodule RiskOfRainWeb.Endpoint do
     plug Phoenix.CodeReloader
   end
 
+  # plug Plug.Static, at: "/characters", from: "/images"
+
+
   plug Plug.Logger
 
   plug Plug.Parsers,

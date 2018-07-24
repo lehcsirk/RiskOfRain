@@ -1,3 +1,7 @@
+<body style="background:url(https://images2.alphacoders.com/769/thumb-1920-769680.jpg);
+            background-repeat:no-repeat; background-size: auto;">
+</body>
+
 <center>
   <form style="font-size : 30px; width: 500px;
       height: 100%; background:#48E0A7;
@@ -22,7 +26,7 @@
   </center>
 </h2>
 
-<table class="table"
+<table id="myTable" class="table"
       style="font-size : 15px; width: 100%;
       height: 100%; background:#48E0A7;
       border-radius: 25px; border: 2px solid black;
@@ -30,32 +34,64 @@
       padding:6px; table-layout: fixed; word-wrap: break-word;">
   <thead>
     <tr>
+      <th>Avatar</th>
+      <th style="width: 0%;"></th>
       <th>Name</th>
       <th>Desc</th>
       <th>Rarity</th>
 
       <th>
         <center>
-          <span style="font-size: 15px; color: black;">
-            <%= link "New Item", to: item_path(@conn, :new) %>
-          </span>
+          <%= link "New Item", to: item_path(@conn, :new), class: "btn btn-default" %>
         </center>
       </th>
     </tr>
   </thead>
-  <tbody>
-<%= for item <- @items do %>
-    <tr>
-      <td><%= item.name %></td>
-      <td><%= item.desc %></td>
-      <td><%= item.rarity %></td>
 
-      <td class="text-right">
-        <span><%= link "Show", to: item_path(@conn, :show, item), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Edit", to: item_path(@conn, :edit, item), class: "btn btn-default btn-xs" %></span>
-        <span><%= link "Delete", to: item_path(@conn, :delete, item), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
-      </td>
-    </tr>
-<% end %>
+  <tbody>
+    <%= for item <- @items do %>
+      <tr>
+        <td>
+          <!-- <%= item.id %> -->
+          <img id="" src="" class=img-responsive>
+        </td>
+        <td style="color:transparent;font-size:0">
+          <%= item.id %>
+        </td>
+        <td>
+          <%= item.name %>
+        </td>
+        <td>
+          <%= item.desc %>
+        </td>
+        <td>
+          <%= item.rarity %>
+        </td>
+
+        <td>
+          <%= link "Show", to: item_path(@conn, :show, item), class: "btn btn-default" %>
+          <%= link "Edit", to: item_path(@conn, :edit, item), class: "btn btn-default" %>
+          <center style="margin:5px">
+            <%= link "Delete", to: item_path(@conn, :delete, item), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %>
+          </center>
+        </td>
+      </tr>
+    <% end %>
+
+    <script>
+      var myTable = document.getElementById("myTable")
+      var rowLength = myTable.rows.length
+      for(var i = 1; i < rowLength; i++)
+      {
+        var myCells = myTable.rows.item(i).cells
+        var cellLength = myCells.length
+
+        var name = myCells.item(1).innerHTML
+        name = "item" + name.trim()
+
+        document.getElementsByTagName("img")[i-1].src =
+          "/images/" + name + ".jpg"
+      }
+    </script>
   </tbody>
 </table>

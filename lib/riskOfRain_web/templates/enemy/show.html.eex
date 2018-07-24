@@ -1,23 +1,50 @@
-<h2>Show Enemy</h2>
+<body style="background:url(https://images2.alphacoders.com/769/thumb-1920-769680.jpg);
+            background-repeat:no-repeat; background-size: auto">
+</body>
 
-<ul>
+<center>
+  <form style="font-size : 20px; width: 500px;
+      height: 100%; background:#E04848;
+      border-radius: 25px; border: 2px solid black;
+      padding:2px; text-align:left">
+    <h2 style="text-align: center">Show Enemy</h2>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @enemy.name %>
-  </li>
+    <ul>
+      <img id="" src="" class="img-rounded" style="width:25%;">
 
-  <li>
-    <strong>Desc:</strong>
-    <%= @enemy.desc %>
-  </li>
+      <li>
+        <strong>Name:</strong>
+        <%= @enemy.name %>
+      </li>
+      <li>
+        <strong>ID:</strong>
+        <%= @enemy.id %>
+      </li>
 
-  <li>
-    <strong>Type:</strong>
-    <%= @enemy.type %>
-  </li>
+      <script>
+        var link = window.location.href
+        num = "enemy"+ link.substr(link.indexOf("enemies") + 8)
 
-</ul>
+        document.getElementsByTagName("img")[0].src =
+          ("/images/" + num + ".jpg")
+      </script>
 
-<span><%= link "Edit", to: enemy_path(@conn, :edit, @enemy) %></span>
-<span><%= link "Back", to: enemy_path(@conn, :index) %></span>
+      <li>
+        <strong>Desc:</strong>
+        <%= @enemy.desc %>
+      </li>
+
+      <li>
+        <strong>Type:</strong>
+        <%= if @enemy.type == nil, do: '', else: @enemy.type%>
+      </li>
+
+    </ul>
+
+    <p style="text-align:center">
+      <%= link "Edit", to: enemy_path(@conn, :edit, @enemy), class: "btn btn-default btn-lg" %>
+      <%= link "Back", to: enemy_path(@conn, :index), class: "btn btn-default btn-lg" %>
+    </p>
+    
+  </form>
+</center>

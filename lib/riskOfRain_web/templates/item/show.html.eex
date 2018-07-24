@@ -1,23 +1,50 @@
-<h2>Show Item</h2>
+<body style="background:url(https://images2.alphacoders.com/769/thumb-1920-769680.jpg);
+            background-repeat:no-repeat; background-size: auto">
+</body>
 
-<ul>
+<center>
+  <form style="font-size : 20px; width: 500px;
+      height: 100%; background:#48E0A7;
+      border-radius: 25px; border: 2px solid black;
+      padding:2px; text-align:left">
+    <h2 style="text-align: center">Show Item</h2>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @item.name %>
-  </li>
+    <ul>
+      <img id="" src="" class="img-rounded" style="width:25%;">
 
-  <li>
-    <strong>Desc:</strong>
-    <%= @item.desc %>
-  </li>
+      <li>
+        <strong>Name:</strong>
+        <%= @item.name %>
+      </li>
+      <li>
+        <strong>ID:</strong>
+        <%= @item.id %>
+      </li>
 
-  <li>
-    <strong>Rarity:</strong>
-    <%= @item.rarity %>
-  </li>
+      <script>
+        var link = window.location.href
+        num = "item"+ link.substr(link.indexOf("items") + 6)
 
-</ul>
+        document.getElementsByTagName("img")[0].src =
+          ("/images/" + num + ".jpg")
+      </script>
 
-<span><%= link "Edit", to: item_path(@conn, :edit, @item) %></span>
-<span><%= link "Back", to: item_path(@conn, :index) %></span>
+      <li>
+        <strong>Desc:</strong>
+        <%= @item.desc %>
+      </li>
+
+      <li>
+        <strong>Rarity:</strong>
+        <%= if @item.rarity == nil, do: '', else: @item.rarity%>
+      </li>
+
+    </ul>
+
+    <p style="text-align:center">
+      <%= link "Edit", to: item_path(@conn, :edit, @item), class: "btn btn-default btn-lg" %>
+      <%= link "Back", to: item_path(@conn, :index), class: "btn btn-default btn-lg" %>
+    </p>
+
+  </form>
+</center>

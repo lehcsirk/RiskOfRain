@@ -1,5 +1,14 @@
-<h2>Edit Enemy</h2>
+<body style="background:url(https://images2.alphacoders.com/769/thumb-1920-769680.jpg);
+            background-repeat:no-repeat; background-size: auto">
+</body>
 
-<%= render "form.html", Map.put(assigns, :action, enemy_path(@conn, :update, @enemy)) %>
+<center style="font-size : 20px; width: 100%;
+      height: 100%; background:#E04848;
+      border-radius: 25px; border: 2px solid black;
+      padding:2px; text-align:left; padding:12px">
 
-<span><%= link "Back", to: enemy_path(@conn, :index) %></span>
+    <h2 style="text-align: center">Edit Enemy</h2>
+
+    <%= render "form.html", Map.put(assigns, :action, enemy_path(@conn, :update, @enemy)) %>
+
+</center>

@@ -1,23 +1,51 @@
-<h2>Show Character</h2>
+<body style="background:url(https://images2.alphacoders.com/769/thumb-1920-769680.jpg);
+            background-repeat:no-repeat; background-size: auto">
+</body>
 
-<ul>
+<center>
+  <form style="font-size : 20px; width: 500px;
+      height: 100%; background:#48B0E0;
+      border-radius: 25px; border: 2px solid black;
+      padding:2px; text-align:left">
+    <h2 style="text-align: center">Show Character</h2>
 
-  <li>
-    <strong>Name:</strong>
-    <%= @character.name %>
-  </li>
+    <ul>
+      <img id="" src="" class="img-rounded" style="width:25%;">
 
-  <li>
-    <strong>Desc:</strong>
-    <%= @character.desc %>
-  </li>
+      
+      <li>
+        <strong>Name:</strong>
+        <%= @character.name %>
+      </li>
+      <li>
+        <strong>ID:</strong>
+        <%= @character.id %>
+      </li>
 
-  <li>
-    <strong>Abilities:</strong>
-    <%= if @character.abilities == nil, do: '', else: Enum.join(@character.abilities, ", ") %>
-  </li>
+      <script>
+        var link = window.location.href
+        num = "character"+ link.substr(link.indexOf("characters") + 11)
 
-</ul>
+        document.getElementsByTagName("img")[0].src =
+          ("/images/" + num + ".jpg")
+      </script>
 
-<span><%= link "Edit", to: character_path(@conn, :edit, @character) %></span>
-<span><%= link "Back", to: character_path(@conn, :index) %></span>
+      <li>
+        <strong>Desc:</strong>
+        <%= @character.desc %>
+      </li>
+
+      <li>
+        <strong>Abilities:</strong>
+        <%= if @character.abilities == nil, do: '', else: Enum.join(@character.abilities, ", ") %>
+      </li>
+
+    </ul>
+
+    <p style="text-align:center">
+      <%= link "Edit", to: character_path(@conn, :edit, @character), class: "btn btn-default btn-lg" %>
+      <%= link "Back", to: character_path(@conn, :index), class: "btn btn-default btn-lg" %>
+    </p>
+
+  </form>
+</center>

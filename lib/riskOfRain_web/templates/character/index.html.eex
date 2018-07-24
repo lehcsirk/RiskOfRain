@@ -1,3 +1,7 @@
+<body style="background:url(https://images2.alphacoders.com/769/thumb-1920-769680.jpg);
+            background-repeat:no-repeat; background-size: auto">
+</body>
+
 <center>
   <form style="font-size : 30px; width: 500px;
       height: 100%; background:#48B0E0;
@@ -22,7 +26,7 @@
   </center>
 </h2>
 
-<table class="table"
+<table id="myTable" class="table"
       style="font-size : 15px; width: 100%;
       height: 100%; background:#48B0E0;
       border-radius: 25px; border: 2px solid black;
@@ -30,15 +34,15 @@
       padding:6px; table-layout: fixed; word-wrap: break-word;">
   <thead>
     <tr>
+      <th>Avatar</th>
+      <th style="width: 0%;"></th>
       <th>Name</th>
       <th>Desc</th>
       <th>Abilities</th>
 
       <th>
         <center>
-          <span style="font-size: 15px; color: black;">
-            <%= link "New Character", to: character_path(@conn, :new) %>
-          </span>
+          <%= link "New Character", to: character_path(@conn, :new), class: "btn btn-default" %>
         </center>
       </th>
     </tr>
@@ -47,16 +51,53 @@
   <tbody>
     <%= for character <- @characters do %>
       <tr>
-        <td><%= character.name %></td>
-        <td><%= character.desc %></td>
-        <td><%= if character.abilities == nil, do: '', else: Enum.join(character.abilities, ", ") %></td>
+        <td>
+          <!-- <%= character.id %> -->
+          <img id="" src="" class=img-responsive>
 
-        <td class="text-right">
-          <span><%= link "Show", to: character_path(@conn, :show, character), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Edit", to: character_path(@conn, :edit, character), class: "btn btn-default btn-xs" %></span>
-          <span><%= link "Delete", to: character_path(@conn, :delete, character), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+          <!-- <form action="upload.php" method="post" enctype="multipart/form-data">
+              Select image to upload:
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Upload Image" name="submit">
+          </form> -->
+        </td>
+        <td style="color:transparent;font-size:0">
+          <%= character.id %>
+        </td>
+        <td>
+          <%= character.name %>
+        </td>
+        <td>
+          <%= character.desc %>
+        </td>
+        <td>
+          <%= if character.abilities == nil, do: '', else: Enum.join(character.abilities, ", ") %>
+        </td>
+
+        <td>
+          <%= link "Show", to: character_path(@conn, :show, character), class: "btn btn-default" %>
+          <%= link "Edit", to: character_path(@conn, :edit, character), class: "btn btn-default" %>
+          <center style="margin:5px">
+            <%= link "Delete", to: character_path(@conn, :delete, character), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %>
+          </center>
         </td>
       </tr>
     <% end %>
+
+    <script>
+      var myTable = document.getElementById("myTable")
+      var rowLength = myTable.rows.length
+      for(var i = 1; i < rowLength; i++)
+      {
+        var myCells = myTable.rows.item(i).cells
+        var cellLength = myCells.length
+
+        var name = myCells.item(1).innerHTML
+        name = "character" + name.trim()
+
+        document.getElementsByTagName("img")[i-1].src =
+          "/images/" + name + ".jpg"
+      }
+    </script>
   </tbody>
 </table>

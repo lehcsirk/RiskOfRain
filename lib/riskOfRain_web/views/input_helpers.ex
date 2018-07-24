@@ -42,13 +42,13 @@ def array_input(form, field) do
     Phoenix.HTML.Form.input_name(form, field) <> "[]"
   end
   def array_add_button(form, field) do
-  id = Phoenix.HTML.Form.input_id(form,field)
-  content = form_elements(form,field,"","__name__")
-    |> safe_to_string
-  data = [
-    prototype: content,
-    container: container_id(id)
-  ];
-  link("Add", to: "#",data: data, class: "add-form-field")
-end
+    id = Phoenix.HTML.Form.input_id(form,field)
+    content = form_elements(form,field,"","__name__")
+      |> safe_to_string
+    data = [
+      prototype: content,
+      container: container_id(id)
+    ];
+    link("Add", to: "#",data: data, class: "add-form-field")
+  end
 end

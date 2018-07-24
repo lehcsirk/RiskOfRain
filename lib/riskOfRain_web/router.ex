@@ -20,6 +20,7 @@ defmodule RiskOfRainWeb.Router do
     resources "/items", ItemController
     resources "/enemies", EnemyController
     resources "/characters", CharacterController
+    # resources "/images", ImageController
 
 
   end
