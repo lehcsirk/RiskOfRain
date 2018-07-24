@@ -10,7 +10,19 @@
     <h2 style="text-align: center">Show Item</h2>
 
     <ul>
-      <img id="" src="" class="img-rounded" style="width:25%;">
+
+      <%=
+        currentPathName = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/item#{@item.name}.jpg"
+        newPathName = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/item#{@item.id}.jpg"
+
+        if File.exists?(currentPathName) do
+          IO.puts "=====> The File Exists!"
+          IO.puts "=====> The original path is #{currentPathName}"
+          IO.puts "=====> The new path is #{newPathName}"
+
+          File.rename(currentPathName, newPathName)
+        end%>
+        <img id="" src="" alt="" class="img-rounded" style="width:25%;">
 
       <li>
         <strong>Name:</strong>

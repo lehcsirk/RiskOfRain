@@ -20,15 +20,17 @@ defmodule RiskOfRainWeb.CharacterController do
     characterMap = params["character"]
     name = characterMap["name"]
 
-    if File.exists?(upload.path) and File.exists?(myPath) do
-      IO.puts "=====> The File Exists!"
-      IO.puts "=====> The original path is #{upload.path}"
-      myPath = myPath <> "character#{name}.jpg"
-      IO.puts "=====> The new path is #{myPath}"
-      # IO.puts "=====> Character: #{character}"
+    if upload do
+      if File.exists?(upload.path) and File.exists?(myPath) do
+        IO.puts "=====> The File Exists!"
+        IO.puts "=====> The original path is #{upload.path}"
+        myPath = myPath <> "character#{name}.jpg"
+        IO.puts "=====> The new path is #{myPath}"
 
-      File.cp(upload.path, myPath)
+        File.cp(upload.path, myPath)
+      end
     end
+
 
     case Test.create_character(character_params) do
       {:ok, character} ->
@@ -41,7 +43,6 @@ defmodule RiskOfRainWeb.CharacterController do
   end
 
   def show(conn, %{"id" => id}) do
-
     character = Test.get_character!(id)
     render(conn, "show.html", character: character)
   end
@@ -52,7 +53,23 @@ defmodule RiskOfRainWeb.CharacterController do
     render(conn, "edit.html", character: character, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "character" => character_params}) do
+  def update(conn, %{"id" => id, "character" => character_params}=params) do
+    upload = params["avatar"]
+    myPath = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/"
+    characterMap = params["character"]
+    name = characterMap["name"]
+
+    if upload do
+      if File.exists?(upload.path) and File.exists?(myPath) do
+        IO.puts "=====> The File Exists!"
+        IO.puts "=====> The original path is #{upload.path}"
+        myPath = myPath <> "character#{name}.jpg"
+        IO.puts "=====> The new path is #{myPath}"
+
+        File.cp(upload.path, myPath)
+      end
+    end
+
     character_params = Map.put_new(character_params, "abilities", nil)
 
     character = Test.get_character!(id)

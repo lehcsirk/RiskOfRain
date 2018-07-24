@@ -7,7 +7,7 @@ defmodule RiskOfRain.Test.Enemy do
     field :desc, :string
     field :name, :string
     field :type, :string
-
+    has_one :avatar, :fileToUpload
     timestamps()
   end
 

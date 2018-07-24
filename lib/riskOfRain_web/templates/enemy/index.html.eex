@@ -52,8 +52,7 @@
     <%= for enemy <- @enemies do %>
       <tr>
         <td>
-          <!-- <%= enemy.id %> -->
-          <img id="" src="" class=img-responsive>
+          <img id="" src="" class=img-responsive alt="">
         </td>
         <td style="color:transparent;font-size:0">
           <%= enemy.id %>
@@ -73,7 +72,7 @@
           <%= link "Edit", to: enemy_path(@conn, :edit, enemy), class: "btn btn-default" %>
           <center style="margin:5px">
             <%= link "Delete", to: enemy_path(@conn, :delete, enemy), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger" %>
-          </center
+          </center>
         </td>
       </tr>
     <% end %>

@@ -6,8 +6,7 @@ defmodule RiskOfRain.Repo.Migrations.CreateCharacters do
       add :name, :string
       add :desc, :string
       add :abilities, {:array, :string}
-      # add :avatar, :fileToUpload
-
+      
       timestamps()
     end
 

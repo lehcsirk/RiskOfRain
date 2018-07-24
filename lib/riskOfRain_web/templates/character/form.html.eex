@@ -1,11 +1,11 @@
-<%= form_for @changeset, @action,[multipart: true], fn f -> %>
+<%= form_for @changeset, @action, [multipart: true], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
 
-  <img src="" class="img-rounded" style="width:25%;">
+  <img src="" class="img-rounded" alt="" style="width:25%;">
 
   <script>
     var link = window.location.href
@@ -16,9 +16,12 @@
       {
         num = link.substr(link.indexOf("characters") + 11)
         num = "character" + num.substr(0, num.indexOf("#"))
-        document.getElementById("demo").innerHTML=num
         document.getElementsByTagName("img")[0].src =
           ("/images/" + num + ".jpg")
+        // if document.getElementsByTagName("img")[0].src != ("/images/" + num + ".jpg")
+        // {
+        //   document.getElementsByTagName("img")[0].src = ""
+        // }
       }
       else
       {
@@ -34,6 +37,10 @@
         }
         document.getElementsByTagName("img")[0].src =
           ("/images/" + num + ".jpg")
+        // if document.getElementsByTagName("img")[0].src != ("/images/" + num + ".jpg")
+        // {
+        //   document.getElementsByTagName("img")[0].src = ""
+        // }
       }
     }
   </script>
@@ -44,8 +51,6 @@
        id="avatar" name="avatar"
        accept="image/png, image/jpeg" />
   </div>
-
-  </script>
 
   <div class="form-group">
     <%= label f, :name, class: "control-label" %>

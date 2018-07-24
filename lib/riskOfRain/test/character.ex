@@ -22,10 +22,4 @@ defmodule RiskOfRain.Test.Character do
     |> validate_required([:name, :desc, :abilities])
     |> validate_length(:abilities, max: 4)
   end
-  # def changeset(character, attrs) do
-  #   character
-  #   |> cast(attrs, [:name, :desc, :abilities])
-  #   |> validate_required([:name, :desc, :abilities])
-  #   |> validate_length(:abilities, is: 0)
-  # end
 end

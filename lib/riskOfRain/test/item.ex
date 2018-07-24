@@ -7,7 +7,7 @@ defmodule RiskOfRain.Test.Item do
     field :desc, :string
     field :name, :string
     field :rarity, :string
-
+    has_one :avatar, :fileToUpload
     timestamps()
   end
 

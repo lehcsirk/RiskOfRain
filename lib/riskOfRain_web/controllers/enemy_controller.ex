@@ -14,7 +14,23 @@ defmodule RiskOfRainWeb.EnemyController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"enemy" => enemy_params}) do
+  def create(conn, %{"enemy" => enemy_params}=params) do
+    upload = params["avatar"]
+    myPath = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/"
+    enemyMap = params["enemy"]
+    name = enemyMap["name"]
+
+    if upload do
+      if File.exists?(upload.path) and File.exists?(myPath) do
+        IO.puts "=====> The File Exists!"
+        IO.puts "=====> The original path is #{upload.path}"
+        myPath = myPath <> "enemy#{name}.jpg"
+        IO.puts "=====> The new path is #{myPath}"
+
+        File.cp(upload.path, myPath)
+      end
+    end
+
     case Test.create_enemy(enemy_params) do
       {:ok, enemy} ->
         conn
@@ -36,9 +52,24 @@ defmodule RiskOfRainWeb.EnemyController do
     render(conn, "edit.html", enemy: enemy, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "enemy" => enemy_params}) do
-    enemy = Test.get_enemy!(id)
+  def update(conn, %{"id" => id, "enemy" => enemy_params}=params) do
+    upload = params["avatar"]
+    myPath = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/"
+    enemyMap = params["enemy"]
+    name = enemyMap["name"]
 
+    if upload do
+      if File.exists?(upload.path) and File.exists?(myPath) do
+        IO.puts "=====> The File Exists!"
+        IO.puts "=====> The original path is #{upload.path}"
+        myPath = myPath <> "enemy#{name}.jpg"
+        IO.puts "=====> The new path is #{myPath}"
+
+        File.cp(upload.path, myPath)
+      end
+    end
+
+    enemy = Test.get_enemy!(id)
     case Test.update_enemy(enemy, enemy_params) do
       {:ok, enemy} ->
         conn

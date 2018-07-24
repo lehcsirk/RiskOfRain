@@ -52,8 +52,7 @@
     <%= for item <- @items do %>
       <tr>
         <td>
-          <!-- <%= item.id %> -->
-          <img id="" src="" class=img-responsive>
+          <img id="" src="" class=img-responsive alt="">
         </td>
         <td style="color:transparent;font-size:0">
           <%= item.id %>

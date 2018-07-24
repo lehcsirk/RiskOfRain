@@ -14,7 +14,23 @@ defmodule RiskOfRainWeb.ItemController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"item" => item_params}) do
+  def create(conn, %{"item" => item_params}=params) do
+    upload = params["avatar"]
+    myPath = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/"
+    itemMap = params["item"]
+    name = itemMap["name"]
+
+    if upload do
+      if File.exists?(upload.path) and File.exists?(myPath) do
+        IO.puts "=====> The File Exists!"
+        IO.puts "=====> The original path is #{upload.path}"
+        myPath = myPath <> "item#{name}.jpg"
+        IO.puts "=====> The new path is #{myPath}"
+
+        File.cp(upload.path, myPath)
+      end
+    end
+
     case Test.create_item(item_params) do
       {:ok, item} ->
         conn
@@ -36,9 +52,24 @@ defmodule RiskOfRainWeb.ItemController do
     render(conn, "edit.html", item: item, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "item" => item_params}) do
-    item = Test.get_item!(id)
+  def update(conn, %{"id" => id, "item" => item_params}=params) do
+    upload = params["avatar"]
+    myPath = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/"
+    itemMap = params["item"]
+    name = itemMap["name"]
 
+    if upload do
+      if File.exists?(upload.path) and File.exists?(myPath) do
+        IO.puts "=====> The File Exists!"
+        IO.puts "=====> The original path is #{upload.path}"
+        myPath = myPath <> "item#{name}.jpg"
+        IO.puts "=====> The new path is #{myPath}"
+
+        File.cp(upload.path, myPath)
+      end
+    end
+
+    item = Test.get_item!(id)
     case Test.update_item(item, item_params) do
       {:ok, item} ->
         conn
