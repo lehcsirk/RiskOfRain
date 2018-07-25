@@ -24,10 +24,12 @@ defmodule RiskOfRainWeb.EnemyController do
       if File.exists?(upload.path) and File.exists?(myPath) do
         IO.puts "=====> The File Exists!"
         IO.puts "=====> The original path is #{upload.path}"
-        myPath = myPath <> "enemy#{name}.jpg"
-        IO.puts "=====> The new path is #{myPath}"
+        myPath2 = myPath <> "enemy#{name}.jpg"
+        IO.puts "=====> The new path is #{myPath2}"
 
-        File.cp(upload.path, myPath)
+        if myPath2 != myPath <> "enemy.jpg" do
+          File.cp(upload.path, myPath2)
+        end
       end
     end
 

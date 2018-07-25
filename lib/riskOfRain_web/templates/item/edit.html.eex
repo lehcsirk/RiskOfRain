@@ -7,7 +7,7 @@
       border-radius: 25px; border: 2px solid black;
       padding:2px; text-align:left; padding:12px">
 
-    <h2 style="text-align: center">Edit Item</h2>
+    <center><h2>Edit Item</h2></center>
 
     <%= render "form.html", Map.put(assigns, :action, item_path(@conn, :update, @item)) %>
 

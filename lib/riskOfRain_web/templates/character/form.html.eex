@@ -16,8 +16,11 @@
       {
         num = link.substr(link.indexOf("characters") + 11)
         num = "character" + num.substr(0, num.indexOf("#"))
-        document.getElementsByTagName("img")[0].src =
-          ("/images/" + num + ".jpg")
+        if num != "character"
+        {
+          document.getElementsByTagName("img")[0].src =
+            ("/images/" + num + ".jpg")
+        }
         // if document.getElementsByTagName("img")[0].src != ("/images/" + num + ".jpg")
         // {
         //   document.getElementsByTagName("img")[0].src = ""

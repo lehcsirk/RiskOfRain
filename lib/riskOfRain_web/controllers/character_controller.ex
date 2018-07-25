@@ -24,13 +24,14 @@ defmodule RiskOfRainWeb.CharacterController do
       if File.exists?(upload.path) and File.exists?(myPath) do
         IO.puts "=====> The File Exists!"
         IO.puts "=====> The original path is #{upload.path}"
-        myPath = myPath <> "character#{name}.jpg"
-        IO.puts "=====> The new path is #{myPath}"
+        myPath2 = myPath <> "character#{name}.jpg"
+        IO.puts "=====> The new path is #{myPath2}"
 
-        File.cp(upload.path, myPath)
+        if myPath2 != myPath <> "character.jpg" do
+          File.cp(upload.path, myPath2)
+        end
       end
     end
-
 
     case Test.create_character(character_params) do
       {:ok, character} ->

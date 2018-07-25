@@ -7,7 +7,7 @@
       height: 100%; background:#E04848;
       border-radius: 25px; border: 2px solid black;
       padding:2px; text-align:left">
-    <h2 style="text-align: center">Show Enemy</h2>
+    <center><h2>Show Enemy</h2></center>
 
     <ul>
 

@@ -7,10 +7,9 @@
       height: 100%; background:#48B0E0;
       border-radius: 25px; border: 2px solid black;
       padding:2px; text-align:left">
-    <h2 style="text-align: center">Show Character</h2>
+      <center><h2>Show Character</h2></center>
 
     <ul>
-
       <%=
         currentPathName = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/character#{@character.name}.jpg"
         newPathName = "/Users/cameron/Desktop/testing\ phx.gen.html/riskOfRain/assets/static/images/character#{@character.id}.jpg"
@@ -53,10 +52,12 @@
 
     </ul>
 
-    <p style="text-align:center">
-      <%= link "Edit", to: character_path(@conn, :edit, @character), class: "btn btn-default btn-lg" %>
-      <%= link "Back", to: character_path(@conn, :index), class: "btn btn-default btn-lg" %>
-    </p>
+    <center>
+      <p>
+        <%= link "Edit", to: character_path(@conn, :edit, @character), class: "btn btn-default btn-lg" %>
+        <%= link "Back", to: character_path(@conn, :index), class: "btn btn-default btn-lg" %>
+      </p>
+    </center>
 
   </form>
 </center>
